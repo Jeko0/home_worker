@@ -7,4 +7,10 @@ Rails.application.routes.draw do
     get '/:id/profile', to: 'profile#show'
     get '/all_user', to: 'profile#index'
   end
+
+  namespace :api do 
+    namespace :v1 do 
+      get "/", to: "pages#index"
+    end
+  end
 end
