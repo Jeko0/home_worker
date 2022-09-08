@@ -14,4 +14,10 @@ Rails.application.routes.draw do
       resources :writers_info, only: %i[index show create]
     end
   end
+  
+  namespace :api do 
+    namespace :v1 do 
+      get "/", to: "pages#index"
+    end
+  end
 end
