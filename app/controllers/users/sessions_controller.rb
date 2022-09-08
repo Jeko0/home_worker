@@ -2,10 +2,12 @@ class Users::SessionsController < Devise::SessionsController
   skip_before_action :verify_signed_out_user, only: [:destroy]
   respond_to :json
 
-  def create
-    self.resource = warden.authenticate!(auth_options)
-    respond_with resource
-  end
+  # def create
+  #   self.resource = warden.authenticate!(auth_options)
+  #   sign_in(resource_name, resource)
+  #   yield resource if block_given?
+  #   respond_with resource
+  # end
 
   private
 
