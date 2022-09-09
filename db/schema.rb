@@ -45,7 +45,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_09_102017) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "writers_info_id", null: false
     t.index ["user_id"], name: "index_reviews_on_user_id"
+    t.index ["writers_info_id"], name: "index_reviews_on_writers_info_id"
   end
 
   create_table "subjects", force: :cascade do |t|
@@ -111,6 +113,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_09_102017) do
   add_foreign_key "comments", "reviews"
   add_foreign_key "comments", "users"
   add_foreign_key "reviews", "users"
+  add_foreign_key "reviews", "writers_infos"
   add_foreign_key "tasks", "categories"
   add_foreign_key "writers_infos", "subjects"
   add_foreign_key "writers_infos", "users"
