@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       resources :writers_info, only: %i[index show create]
       
       get "/", to: "pages#index"
+      get "/categories", to: "categories#index"
     end
   end
 end
