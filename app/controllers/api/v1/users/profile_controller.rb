@@ -12,10 +12,6 @@ module Api
 
         render json: @user.username
       end
-
-      def my_current_user
-        render json: current_user
-      end
     end
   end
 end

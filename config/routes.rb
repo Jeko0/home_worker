@@ -6,7 +6,6 @@ Rails.application.routes.draw do
         resources :registrations, only: %i[create update]
         get '/:id/profile', to: 'profile#show'
         get '/all_user', to: 'profile#index'
-        get '/current_user', to: 'profile#my_current_user'
       end
       
       resources :writers_info, only: %i[index show create]
