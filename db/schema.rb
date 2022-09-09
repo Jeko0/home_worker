@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema[7.0].define(version: 2022_09_09_060648) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_09_061328) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -21,7 +20,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_09_060648) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["subject_id"], name: "index_categories_on_subject_id"
-
+  end
 
   create_table "jwt_denylist", force: :cascade do |t|
     t.string "jti"
@@ -71,7 +70,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_09_060648) do
     t.index ["user_id"], name: "index_writers_infos_on_user_id"
   end
 
+  add_foreign_key "categories", "subjects"
+  add_foreign_key "reviews", "users"
   add_foreign_key "writers_infos", "subjects"
   add_foreign_key "writers_infos", "users"
-  add_foreign_key "reviews", "users"
 end
