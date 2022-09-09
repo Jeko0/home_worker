@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   has_many :writers_infos, dependent: :destroy
   has_many :reviews, dependent: :destroy
+  has_many :clients_tasks, foreign_key: "author_id", class_name: "Task", dependent: :destroy
+  has_many :writers_tasks, foreign_key: "client_id", class_name: "Task", dependent: :destroy
 
   validates :username, presence: true
 

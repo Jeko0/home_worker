@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_09_102017) do
+
+ActiveRecord::Schema[7.0].define(version: 2022_09_09_084607) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -31,6 +33,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_09_102017) do
     t.index ["review_id"], name: "index_comments_on_review_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
+
 
   create_table "jwt_denylist", force: :cascade do |t|
     t.string "jti"
@@ -55,6 +58,20 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_09_102017) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "tasks", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.float "salary"
+    t.boolean "finished", default: false, null: false
+    t.datetime "finished_time", default: "2022-09-10 10:18:49"
+    t.integer "client_id", null: false
+    t.integer "writer_id", null: false
+    t.bigint "category_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_tasks_on_category_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "username", default: "", null: false
     t.string "email", default: "", null: false
@@ -69,6 +86,20 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_09_102017) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "writers", force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.float "rating", default: 0.0
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_writers_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_writers_on_reset_password_token", unique: true
+  end
+
   create_table "writers_infos", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.float "rating"
@@ -81,9 +112,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_09_102017) do
   end
 
   add_foreign_key "categories", "subjects"
+
   add_foreign_key "comments", "reviews"
   add_foreign_key "comments", "users"
   add_foreign_key "reviews", "users"
+
+  add_foreign_key "reviews", "users"
+  add_foreign_key "tasks", "categories"
   add_foreign_key "writers_infos", "subjects"
   add_foreign_key "writers_infos", "users"
 end
