@@ -11,6 +11,9 @@ Rails.application.routes.draw do
       
       resources :writers_info, only: %i[index show create]
       resources :tasks, only: %i[index show create update destroy]
+      resources :reviews do
+        resources :comments, only: %i[create update destroy]
+      end
 
       get "/", to: "pages#index"
       get "/categories", to: "categories#index"
