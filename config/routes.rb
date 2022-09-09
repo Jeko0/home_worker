@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   namespace :api do
     namespace :v1 do
       namespace :users do
@@ -9,6 +10,8 @@ Rails.application.routes.draw do
         get '/current_user', to: 'profile#my_current_user'
       end
       resources :writers_info, only: %i[index show create]
+      
+      get "/", to: "pages#index"
     end
   end
 end
