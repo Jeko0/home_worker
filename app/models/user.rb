@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :jwt_authenticatable, jwt_revocation_strategy: JwtDenylist
 
-  has_many :writers_infos
+  has_many :writers_infos, dependent: :destroy
 
   validates :username, presence: true
 
