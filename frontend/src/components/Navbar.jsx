@@ -1,5 +1,8 @@
 import React from 'react';
 import logo from '../logo.jpg'
+import { selectCurrentUser } from '../store/user/user.select';
+import { useSelector } from 'react-redux';
+
 
 export const Navbar = () => {
 
@@ -14,7 +17,7 @@ export const Navbar = () => {
   return (
     <nav class="bg-slate-200 px-2 sm:px-4 py-2.5 dark:bg-gray-900 fixed w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600">
       <div class="container flex flex-wrap justify-between items-center mx-auto">
-        <a href="#" class="flex items-center">
+        <a href="#" className="flex items-center">
             <IconOption/>
             <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white ml-7 text-2xl">Home Worker</span>
         </a>
