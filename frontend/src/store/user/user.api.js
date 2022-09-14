@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const API_URL = 'http://192.168.60.108:3001/api/v1/users'
+// const API_URL = 'http://192.168.60.108:3001/api/v1/users'
+const API_URL = 'http://localhost:3001/api/v1/users'
 
 export const getAllUser = async () => {
   const response = await axios.get(`${API_URL}/all_user`);
@@ -8,18 +9,27 @@ export const getAllUser = async () => {
 }
 
 export const signInUser = async ({email, password}) => {
-  const response = await axios.post(`${API_URL}/sessions`, {
-    user: {
-      email: email,
-      password: password
-    } 
-  });
-  return response;
+  try {
+    const response = await axios.post(`${API_URL}/sessions`, {
+      user: {
+        email: email,
+        password: password
+      } 
+    });
+    return response;
+  } catch(errors) {
+    return errors.response;
+  }
+  
 }
 
 export const signUpUser= async (user) => {
-  const response = await axios.post(`${API_URL}/registrations`, {
-    user: user
-  })
-  return response;
+  try {
+    const response = await axios.post(`${API_URL}/registrations`, {
+      user: user
+    })
+    return response;
+  } catch(errors) {
+    return errors.response;
+  }
 } 
