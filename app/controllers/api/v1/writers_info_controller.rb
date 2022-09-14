@@ -1,6 +1,7 @@
 module Api
   module V1
     class WritersInfoController < ApplicationController
+
       before_action :set_user
       before_action :require_current_user_is_writer!, only: %i[create]
 
