@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Navbar } from './components/Navbar';
+import { Navbar, Sidebar } from './components';
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import Home from './routes/home/home';
@@ -9,13 +9,19 @@ import Subjects from './routes/subjects/subjects';
 
 function App() {
   return (
-    <Routes>
-      <Route path='/' element={ <Navbar /> } >
-        <Route index element={ <Home /> } />
-        <Route path='/auth' element={<Authentication/>} />
-        <Route path='subjects' element={<Subjects />} />
-      </Route>
-    </Routes>
+    <div>
+      <Sidebar /> 
+      <div id='page-wrap'>
+        <Routes>
+          <Route path='/' element={ <Navbar /> } >
+            <Route index element={ <Home /> } />
+            <Route path='home' element={ <Home />} />
+            <Route path='/auth' element={<Authentication/>} />
+            <Route path='subjects' element={<Subjects />} />
+          </Route>
+        </Routes>
+      </div>
+    </div>
   );
 }
 
