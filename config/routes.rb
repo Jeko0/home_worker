@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
       get "/", to: "pages#index"
       get "/categories", to: "categories#index"
+      get "/subject_categories", to: "categories#subject_categories"
     end
   end
 end
