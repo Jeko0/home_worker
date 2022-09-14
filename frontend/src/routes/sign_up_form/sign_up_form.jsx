@@ -19,24 +19,39 @@ const SignUpForm = () => {
   const { username, email, password, password_confirmation} = formFields;
   const dispatch = useDispatch();
   const navigator = useNavigate();
+  const [errors, setErrors] = useState([]);
 
   const resetFormField = () => {
     setFormFields(defaultFormFields);
   }
 
+  const handleCloseAlert = (deleteError) => {
+    const leftErrors = errors.filter((error) => error != deleteError)
+    setErrors(leftErrors);
+  }
+
+  const handleErrorsMessage = (responseErrors) => {
+    const array = Object.keys(responseErrors);
+    const result = array.map((key) => (`${key} `+ responseErrors[key]))
+    setErrors(result);
+   }
+
   const handleSubmit = async (event) => {
     event.preventDefault();
-    try {
-       signUpUser(formFields).then((response) => {
-        const {user, access_token } = response.data;
-        dispatch(setCurrentUser(user));
-        dispatch(setAccessToken(access_token));
-      })
-      navigator('/');
-    } catch(error) {
-      console.log(error)
-    }
-   
+      try{
+        signUpUser(formFields).then((response) => {
+         const {user, access_token} = response.data || {}
+         if (user && access_token){
+           dispatch(setCurrentUser(user));
+           dispatch(setAccessToken(access_token));
+           navigator('/');
+         } else {
+           handleErrorsMessage(response.data)
+         }
+       })
+      } catch(error) {
+        console.log(errors);
+      }
     
   }
 
@@ -89,6 +104,23 @@ const SignUpForm = () => {
 
         <button type='submit' className="inline-block px-6 py-2 border-2 border-blue-600 text-blue-600 font-medium text-xs leading-tight uppercase rounded-full hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out" > sign up </button>
       </form>
+      {
+        errors ? (
+          <div className="flex flex-col space-y-5 ">
+          {errors.map((error) => (
+            <div className="alert-toast flex float-left bottom-0 mt-8 w-5/6 md:w-full max-w-sm" onClick={() => handleCloseAlert(error)}>
+              <label className="close cursor-pointer flex items-start justify-between w-full p-2 bg-red-600 h-24 rounded shadow-lg text-black" title="close">
+                {error}
+                <svg className="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+                  <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
+                </svg>
+              </label>
+            </div>
+          )
+          )}
+          </div>
+        ) : ( <></>)
+      }
     </div>
   );  
 }

@@ -5,27 +5,23 @@ module Api
       before_action :authenticable, only: %i[update]
 
       def create
-        @user = User.sign_up(user_params)
+        @user = User.new(user_params)
 
         if @user.save
           respond_with(@user)
         else
           render json: @user.errors, status: :unprocessable_entity
         end
+      rescue => errors
+        render json: errors
       end
 
       def update
-        if @user&.valid_password?(update_user_params[:current_password]) && update_user_params[:password] == update_user_params[:password_confirmation]
-          valid_params = { username: update_user_params[:username], email: update_user_params[:email], password: update_user_params[:password]}
-          if @user.api_update(valid_params)
-            respond_with @user
-          else
-            render json: @user.errors, status: :unprocessable_entity
-          end
+        if @user.update(update_user_params)
+          respond_with(@user)
         else
-          render json: { errors: 'incorrect password or input information'}, status: :unprocessable_entity
+          render json: @user.errors, status: :unprocessable_entity
         end
-
       end
 
       private

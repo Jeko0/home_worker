@@ -19,6 +19,7 @@
     "redux-logger": "^3.0.6",
     "redux-persist": "^6.0.0",
     "sass": "^1.54.9",
+    "styled-components": "^5.3.5",
     "syncfusion-javascript": "^20.2.43",
     "web-vitals": "^2.1.4"
   },
