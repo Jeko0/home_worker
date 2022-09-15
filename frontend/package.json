@@ -14,14 +14,17 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.4.0",
     "react-redux": "^8.0.2",
+    "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
+    "react-swipeable": "^7.0.0",
     "redux": "^4.2.0",
     "redux-logger": "^3.0.6",
     "redux-persist": "^6.0.0",
     "sass": "^1.54.9",
     "styled-components": "^5.3.5",
     "syncfusion-javascript": "^20.2.43",
+    "tailwind-styled-components": "^2.2.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
