@@ -39,12 +39,9 @@ function TasksCreator() {
 
   const handleSetCategories = (categories) => {
     const result = Object.values(categories);
-    console.log('result: ', result)
     dispatch(setCategories(result));
   }
 
-    console.log('subject',subjects)
-    console.log('categories',categories)
   useEffect(() => {
     if(subjects.length === 0){
       try {
