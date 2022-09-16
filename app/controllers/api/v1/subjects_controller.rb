@@ -1,4 +1,4 @@
-class Api::V1::SubjectsController < ApplicationController
+class SubjectsController < ApplicationController
   def create 
     @subject = Subject.new(subject_params) 
 
