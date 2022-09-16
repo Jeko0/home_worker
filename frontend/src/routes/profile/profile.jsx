@@ -2,7 +2,7 @@ import { current } from '@reduxjs/toolkit';
 import React, { Fragment, useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Outlet, useNavigate, useParams } from 'react-router-dom'
-import { getUserProfile } from '../../store/user/user.api';
+import { getUserProfile } from '../../apis/user.api';
 import {selectuser} from '../../store/user/user.select';
 
 function Profile() {

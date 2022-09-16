@@ -2,7 +2,7 @@ import {  useState } from "react";
 import { useDispatch } from "react-redux";
 import {setCurrentUser, setAccessToken} from '../../store/user/user.action'
 import FormInput from "../../routes/form_input/form_imput";
-import { signUpUser } from "../../store/user/user.api";
+import { signUpUser } from "../../apis/user.api";
 import './sign_up_form.style.scss'
 import { useNavigate } from "react-router-dom";
 

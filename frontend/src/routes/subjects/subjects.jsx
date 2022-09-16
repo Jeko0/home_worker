@@ -3,7 +3,7 @@ import { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate, Outlet, useNavigate } from "react-router-dom";
 import { setSubjects } from "../../store/subject/subject.action";
-import { getSubjects } from "../../store/subject/subject.api";
+import { getSubjects } from "../../apis/subject.api";
 import { selectSubjects } from "../../store/subject/subject.select";
 import math from '../../files/images/Math.jpg'; 
 import english from '../../files/images/English.webp';

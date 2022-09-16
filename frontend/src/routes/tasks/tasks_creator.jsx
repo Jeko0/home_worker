@@ -8,21 +8,24 @@ import  ClassicEditor  from '@ckeditor/ckeditor5-build-classic'
 import { useSelector } from 'react-redux';
 import { selectSubjects } from '../../store/subject/subject.select';
 import { selectCategories } from '../../store/category/category.select';
-import { getSubjects } from '../../store/subject/subject.api';
+import { getSubjects } from '../../apis/subject.api';
 import { useDispatch } from 'react-redux';
 import { setSubjects } from '../../store/subject/subject.action';
-import { getAllCategories } from '../../store/category/category.api';
+import { getAllCategories } from '../../apis/category.api';
 import { setCategories } from '../../store/category/category.action';
+
 
 function TasksCreator() {
   const [text, setText] = useState('');
   const subjects = useSelector(selectSubjects);
   const categories = useSelector(selectCategories);
   const [currentSubjectID, setCurrentSebjectID] = useState(0);
-  const [currentCategories, setCurrentCategories] = useState(['choose subject first time']);
+  const [currentCategories, setCurrentCategories] = useState([{name:'choose subject first'}]);
   const [currentCategory, setCurrentCategory] = useState(null);
   const dispatch = useDispatch();
   const [errors, setErrors] = useState([]);
+  const [writersInfos, setWritersInfos] = useState([{user: {username: 'choose category first'}}])
+  const [currentWritersInfo, setCurrentWritersInfo] = useState(null)
 
   const handleSubjects = (allSugjects) => {
     const result = Object.values(allSugjects);
@@ -83,6 +86,14 @@ function TasksCreator() {
     if(currentCategory === null) {
       newErros.push('category must be cchoosech')
     }
+
+    if (currentWritersInfo === null) {
+      newErros.push('you have to choose writer')
+    }
+
+    if(newErros.length === 0){
+      
+    }
   }
 
   return (
@@ -90,10 +101,10 @@ function TasksCreator() {
       <Outlet/>
       <div className='flex flex-col justify-center items-center'>
         <form className="grid grid-flow-row w-3/4 mr-none" onSubmit={handleCreateTask}>
-          <div className="flex flex-wrap -mx-3 mb-6 space-x-3">
-            <div className="relative min-w-[20%]">
+          <div className="flex flex-wrap mb-6 space-x-3">
+            <div className="relative min-w-[30%]">
               <label>subject</label>
-              <select  onChange={handleSetCurrentSubject} className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+              <select  onChange={handleSetCurrentSubject} className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state" required>
               {
                 subjects.map((subject) => (<option value={subject.id}>{subject.title}</option>))
               }
@@ -102,11 +113,22 @@ function TasksCreator() {
                 <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
               </div>
             </div>
-            <div className="relative min-w-[20%]">
+            <div className="relative min-w-[30%]">
               <label>Categories</label>
-              <select className="block  appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+              <select className="block  appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state" required>
               {
                 currentCategories.map((category) => (<option onClick={() => setCurrentCategory(category)}>{category.name}</option>))
+              }
+              </select>
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+              </div>
+            </div>
+            <div className="relative min-w-[30%]">
+              <label>Writers</label>
+              <select className="block  appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state" required>
+              {
+                writersInfos.map((writersInfo) => (<option onClick={() => {setCurrentWritersInfo(writersInfo)}}>{writersInfo.user.username}</option>))
               }
               </select>
               <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">

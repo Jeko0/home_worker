@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom';
-import { getAllCategories, getCategories } from '../../store/category/category.api';
+import { getAllCategories, getCategories } from '../../apis/category.api';
 import { selectCategories } from '../../store/category/category.select'
 import { setCategories} from '../../store/category/category.action';
 

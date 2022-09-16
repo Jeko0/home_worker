@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
-import { getAllWritersInfos, getUserWritersInfos } from '../../store/writers_infos/writers_infos';
+import { getAllWritersInfos, getUserWritersInfos } from '../../apis/writers_infos.api'
 
 
 function WritersInfos() {
