@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+
 import "./home.styles.scss";
 import step from "../../files/images/step.jpg";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -8,6 +9,7 @@ import geography from "../../files/images/Geography.webp";
 import history from "../../files/images/History.webp";
 import chemistry from "../../files/images/Chemistry.jpg";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Button } from "../../components/Button";
 import "swiper/css";
 import "swiper/css/navigation";
 import SwiperCore, { Autoplay, Pagination, Navigation } from "swiper";
@@ -26,16 +28,23 @@ const Home = () => {
         style={{ height: "25rem", backgroundImage: `url(${step})` }}
       >
         <div
-          className="flex 
+          className="
+        flex 
+        flex-col
+        flex-wrap
         items-center 
         justify-center 
         h-full 
         w-full 
-        bg-opacity-50"
+        bg-opacity-50
+        space-y-3"
         >
           <h1
             className="
-          text-gray-200 
+          text-black
+          bg-white
+          px-7
+          rounded-full
           text-2xl 
           font-semibold 
           uppercase 
@@ -43,11 +52,18 @@ const Home = () => {
           >
             Writing Services For Your Needs
           </h1>
+
+          <Button
+            text="Join us"
+            color="white"
+            bgColor="green"
+            borderRadius="10px"
+          />
         </div>
       </div>
 
       <div className="md:container md:mx-auto">
-        <div className="mt-5">
+        <div className="mt-12">
           <Swiper
             className="videogallery-swiper"
             spaceBetween={5}
@@ -77,19 +93,19 @@ const Home = () => {
                 spaceBetween: 25,
               },
             }}
-            modules={[ Autoplay, Pagination, Navigation ]}
+            modules={[Autoplay, Pagination, Navigation]}
           >
             <SwiperSlide>
               <img src={math} alt="" />
             </SwiperSlide>
             <SwiperSlide>
-              <img src={math} alt="" />
+              <img src={english} alt="" />
             </SwiperSlide>
             <SwiperSlide>
-              <img src={math} alt="" />
+              <img src={geography} alt="" />
             </SwiperSlide>
             <SwiperSlide>
-              <img src={math} alt="" />
+              <img src={chemistry} alt="" />
             </SwiperSlide>
             <SwiperSlide>
               <img src={history} alt="" />
