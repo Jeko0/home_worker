@@ -31,9 +31,8 @@ const SignUpForm = () => {
   }
 
   const handleErrorsMessage = (responseErrors) => {
-    const array = Object.keys(responseErrors);
-    const result = array.map((key) => (`${key} `+ responseErrors[key]))
-    setErrors(result);
+    const array = Object.values(responseErrors);
+    setErrors(array);
    }
 
   const handleSubmit = async (event) => {
@@ -50,7 +49,7 @@ const SignUpForm = () => {
          }
        })
       } catch(error) {
-        console.log(errors);
+        console.log('errors:', errors);
       }
     
   }

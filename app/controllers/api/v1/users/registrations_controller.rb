@@ -12,8 +12,6 @@ module Api
         else
           render json: @user.errors, status: :unprocessable_entity
         end
-      rescue => errors
-        render json: errors
       end
 
       def update
