@@ -33,7 +33,7 @@ module Api
       end
 
       def writers_of_category
-        @category = Category.find_by(id: 1)
+        @category = Category.find_by(id: params[:category_id])
         if @category
           @all_writers_info = @category.writers_infos
           render json: @all_writers_info
