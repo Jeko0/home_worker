@@ -32,6 +32,16 @@ module Api
         end
       end
 
+      def writers_of_category
+        @category = Category.find_by(id: 1)
+        if @category
+          @all_writers_info = @category.writers_infos
+          render json: @all_writers_info
+        else
+          render json: { error: 'Category not found' }
+        end
+      end
+
       private
 
         def writers_info_params

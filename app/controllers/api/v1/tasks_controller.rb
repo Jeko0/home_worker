@@ -47,7 +47,7 @@ module Api
       private
 
         def task_params
-          params.require(:task).permit(:writer_id, :title,:description, :salary, :finished_time, :category_id)
+          params.require(:task).permit(:writer_id, :title,:description, :salary, :category_id)
         end
 
         def set_task

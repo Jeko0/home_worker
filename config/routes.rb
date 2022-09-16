@@ -19,6 +19,7 @@ Rails.application.routes.draw do
       get "/", to: "pages#index"
       get "/categories", to: "categories#index"
       get "/subject/:subject_id/categories", to: "categories#subject_categories"
+      get "/writers_of_category", to: "writers_info#writers_of_category"
     end
   end
 end
