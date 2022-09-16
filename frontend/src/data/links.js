@@ -1,32 +1,32 @@
-import React from 'react';
-import { IoMdHome } from 'react-icons/io';
+import React from "react";
+import { IoMdHome } from "react-icons/io";
 import { BiCategoryAlt } from "react-icons/bi";
 import { MdSubject } from "react-icons/md";
-import { BsPencilFill, BsFileEarmarkSpreadsheetFill } from 'react-icons/bs';
-import { FiSettings } from 'react-icons/fi'
-import { CgProfile } from 'react-icons/cg';
+import { BsPencilFill, BsFileEarmarkSpreadsheetFill } from "react-icons/bs";
+import { FiSettings } from "react-icons/fi";
+import { CgProfile } from "react-icons/cg";
 
 export const Links = [
   {
-    title: 'Settings',
+    title: "Settings",
     links: [
       {
-        name: 'profile',
+        name: "profile",
         icon: <CgProfile />,
       },
 
       {
-        name: 'account settings',
+        name: "account settings",
         icon: <FiSettings />,
       },
     ],
   },
 
   {
-    title: 'Dashboard',
+    title: "Dashboard",
     links: [
       {
-        name: 'home',
+        name: "home",
         icon: <IoMdHome />,
       },
     ],
@@ -36,24 +36,24 @@ export const Links = [
     title: "Pages",
     links: [
       {
-        name: 'categories',
+        name: "categories",
         icon: <BiCategoryAlt />,
       },
 
       {
-        name: 'subjects',
+        name: "subjects",
         icon: <MdSubject />,
       },
 
       {
-        name: 'writers',
+        name: "writers",
         icon: <BsPencilFill />,
       },
 
       {
-        name: 'examples',
+        name: "examples",
         icon: <BsFileEarmarkSpreadsheetFill />,
-      }
+      },
     ],
   },
-]
+];

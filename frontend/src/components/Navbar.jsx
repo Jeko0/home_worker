@@ -40,7 +40,7 @@ export const Navbar = () => {
 
   return (
     <Fragment>
-      <nav className="relative flex flex-wrap\ bg-slate-200 px-2 items-center justify-between py-3 dark:bg-gray-900 w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600 ">
+      <nav className="relative flex flex-wrap bg-slate-200 px-2 items-center justify-between py-3 dark:bg-gray-900 w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600 ">
         <div className="container flex flex-wrap justify-between items-center mx-auto">
           <a onClick={handleNavigateHomePage} className="flex items-center">
             <IconOption />
