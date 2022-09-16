@@ -62,7 +62,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_15_105324) do
     t.string "description"
     t.float "salary"
     t.boolean "finished", default: false, null: false
-    t.datetime "finished_time", default: "2022-09-13 06:30:24"
     t.integer "client_id", null: false
     t.integer "writer_id", null: false
     t.bigint "category_id", null: false

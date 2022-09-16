@@ -6,6 +6,9 @@ import Home from './routes/home/home';
 import Authentication from './routes/authentication/authentication';
 import Subjects from './routes/subjects/subjects';
 import Categories from './routes/categories/categories';
+import Profile from './routes/profile/profile';
+import WritersInfos from './routes/writers_infos/writers_infos';
+import TasksCreator from './routes/tasks/tasks_creator';
 
 
 function App() {
@@ -18,8 +21,12 @@ function App() {
             <Route index element={ <Home /> } />
             <Route path='home' element={ <Home />} />
             <Route path='/auth' element={<Authentication/>} />
+            <Route path='/:user_id/profile' element={<Profile/>} />
             <Route path='subjects' element={<Subjects />} />
-            <Route path='subjects/categories' element={<Categories />} />
+            <Route path={`subjects/:subject_id/categories`} element={<Categories />} />
+            <Route path='/categories' element={ <Categories/> } />
+            <Route path='users/:user_id/writers_infos' element={<WritersInfos/>} />
+            <Route path='tasks/new' element={<TasksCreator/>} />
           </Route>
         </Routes>
       </div>

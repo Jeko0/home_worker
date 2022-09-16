@@ -5,7 +5,6 @@ class CreateTasks < ActiveRecord::Migration[7.0]
       t.string :description
       t.float :salary
       t.boolean :finished, null: false, default: false
-      t.datetime :finished_time, default: Time.now + 1.day
       t.integer :client_id, null: false, foreign_key: true
       t.integer :writer_id, null: false, foreign_key: true
       t.references :category, null: false, foreign_key: true

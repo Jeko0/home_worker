@@ -23,7 +23,7 @@ export const signInUser = async ({email, password}) => {
   
 }
 
-export const signUpUser= async (user) => {
+export const signUpUser = async (user) => {
   try {
     const response = await axios.post(`${API_URL}/registrations`, {
       user: user
@@ -33,3 +33,13 @@ export const signUpUser= async (user) => {
     return errors.response;
   }
 } 
+
+
+export const getUserProfile = async (user_id) => {
+  try{
+    const response = await axios.get(`${API_URL}/${user_id}/profile`);
+    return response;
+  } catch(errors){
+    return errors.response;
+  }
+}

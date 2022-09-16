@@ -7,8 +7,8 @@ class Api::V1::CategoriesController < ApplicationController
   def subject_categories
     @subject = Subject.find_by(id: params[:subject_id])
     if @subject
-      @subject_category = @subject.categories
-      render json: @subject_category
+      @categories = @subject.categories
+      render json: @categories
     else
       render json: { error: "Subject not found" }
     end
