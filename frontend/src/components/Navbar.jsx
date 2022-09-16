@@ -12,8 +12,6 @@ export const Navbar = () => {
   const navigator = useNavigate();
   const dispatch = useDispatch();
 
-  console.log(currentUser);
-
   const handleStart = () => {
     navigator('/auth');
   }

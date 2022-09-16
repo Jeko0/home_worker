@@ -1,13 +1,21 @@
 module Api
   module V1
     class WritersInfoController < ApplicationController
-
-      before_action :set_user
-      before_action :require_current_user_is_writer!, only: %i[create]
+      # before_action :set_user
+      # before_action :require_current_user_is_writer!, only: %i[create]
 
       def index
         @writers_infos = WritersInfo.all
         render json: @writers_infos
+      end
+
+      def user_writers_info
+        user = User.find_by(id: params[:user_id])
+        if user
+          render json: user.writers_infos, status: :ok
+        else
+          render json: user.errors
+        end
       end
 
       def show

@@ -62,7 +62,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_09_123218) do
     t.string "description"
     t.float "salary"
     t.boolean "finished", default: false, null: false
-    t.datetime "finished_time", default: "2022-09-10 10:18:49"
+    t.datetime "finished_time", default: "2022-09-16 10:40:11"
     t.integer "client_id", null: false
     t.integer "writer_id", null: false
     t.bigint "category_id", null: false
@@ -83,20 +83,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_09_123218) do
     t.integer "role", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  end
-
-  create_table "writers", force: :cascade do |t|
-    t.string "name", default: "", null: false
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.float "rating", default: 0.0
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_writers_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_writers_on_reset_password_token", unique: true
   end
 
   create_table "writers_infos", force: :cascade do |t|
