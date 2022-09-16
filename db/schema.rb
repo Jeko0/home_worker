@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_09_123218) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_15_105324) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -62,7 +62,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_09_123218) do
     t.string "description"
     t.float "salary"
     t.boolean "finished", default: false, null: false
-    t.datetime "finished_time", default: "2022-09-13 12:57:46"
+    t.datetime "finished_time", default: "2022-09-13 06:30:24"
     t.integer "client_id", null: false
     t.integer "writer_id", null: false
     t.bigint "category_id", null: false
@@ -91,6 +91,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_09_123218) do
     t.bigint "subject_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "category_id", null: false
+    t.index ["category_id"], name: "index_writers_infos_on_category_id"
     t.index ["subject_id"], name: "index_writers_infos_on_subject_id"
     t.index ["user_id", "subject_id"], name: "index_writers_infos_on_user_id_and_subject_id", unique: true
     t.index ["user_id"], name: "index_writers_infos_on_user_id"
@@ -102,6 +104,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_09_123218) do
   add_foreign_key "reviews", "users"
   add_foreign_key "reviews", "writers_infos"
   add_foreign_key "tasks", "categories"
+  add_foreign_key "writers_infos", "categories"
   add_foreign_key "writers_infos", "subjects"
   add_foreign_key "writers_infos", "users"
 end

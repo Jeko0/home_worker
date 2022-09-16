@@ -4,4 +4,5 @@ class WritersInfoSerializer < ActiveModel::Serializer
   belongs_to :user
   belongs_to :subject
   has_many :reviews
+  belongs_to :category
 end

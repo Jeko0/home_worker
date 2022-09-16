@@ -10,7 +10,8 @@ subject = Subject.first_or_create!(title: "Math")
 
 writer_info = WritersInfo.first_or_create!(user_id: 1,
                                           rating: 5,
-                                          subject_id: 1)
+                                          subject_id: 1,
+                                           category_id: 1)
 
 category = Category.first_or_create!(name: "Students",
                                      subject_id: 1
