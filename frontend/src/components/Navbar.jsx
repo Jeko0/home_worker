@@ -16,6 +16,7 @@ export const Navbar = () => {
 
   const handleLogOut = () => {
     dispatch(setCurrentUser());
+    navigator('/');
   };
 
   const handleNavigateHomePage = () => {

@@ -13,6 +13,8 @@ import { useDispatch } from 'react-redux';
 import { setSubjects } from '../../store/subject/subject.action';
 import { getAllCategories } from '../../apis/category.api';
 import { setCategories } from '../../store/category/category.action';
+import { getAllWritersInfos } from '../../apis/writers_infos.api';
+import { createTask } from '../../apis/tasks.api';
 
 
 function TasksCreator() {
@@ -26,6 +28,8 @@ function TasksCreator() {
   const [errors, setErrors] = useState([]);
   const [writersInfos, setWritersInfos] = useState([{user: {username: 'choose category first'}}])
   const [currentWritersInfo, setCurrentWritersInfo] = useState(null)
+  const [title, setTitle] = useState('');
+
 
   const handleSubjects = (allSugjects) => {
     const result = Object.values(allSugjects);
@@ -74,6 +78,11 @@ function TasksCreator() {
     
   }
 
+  const handleSetWritersInfos = (id) => {
+    const category_id = parseInt(id);
+      // get writers infos bay category id and set
+  }
+
   const handleCreateTask = () => {
     let newErros = [];
     if(currentSubjectID === 0){
@@ -89,8 +98,16 @@ function TasksCreator() {
     }
 
     if(newErros.length === 0){
-      
+      const task = {
+        title: title,
+      }
+     console.log(title)
     }
+  }
+
+  const handleChange = (event) => {
+    const {value } = event.target;
+    setTitle(value)
   }
 
   return (
@@ -114,7 +131,10 @@ function TasksCreator() {
               <label>Categories</label>
               <select className="block  appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state" required>
               {
-                currentCategories.map((category) => (<option onClick={() => setCurrentCategory(category)}>{category.name}</option>))
+                currentCategories.map((category) => (<option onClick={() => {
+                  setCurrentCategory(category);
+                  handleSetWritersInfos(category.id)
+                }}>{category.name}</option>))
               }
               </select>
               <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
@@ -125,7 +145,7 @@ function TasksCreator() {
               <label>Writers</label>
               <select className="block  appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state" required>
               {
-                writersInfos.map((writersInfo) => (<option onClick={() => {setCurrentWritersInfo(writersInfo)}}>{writersInfo.user.username}</option>))
+                writersInfos.map((writersInfo) => (<option onClick={() => setCurrentWritersInfo(writersInfo)}>{writersInfo.user.username}</option>))
               }
               </select>
               <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
@@ -134,8 +154,11 @@ function TasksCreator() {
             </div>
             
           </div>
+          <div>
+            <input className="bg-gray-50 border mb-3 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value={title} placeholder='title' onChange={handleChange} />
+          </div>
           <div className="flex flex-wrap -mx-3 mb-6">
-
+              
               <div className='editor w-full h-full'>
                   <CKEditor
                     name="body"
@@ -149,7 +172,7 @@ function TasksCreator() {
           </div>
           <div className="flex justify-between">
             <div className="md:w-full">
-              <button className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
+              <button className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="">
                 Create Task
               </button>
             </div>
