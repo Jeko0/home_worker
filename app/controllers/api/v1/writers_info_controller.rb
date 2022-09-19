@@ -1,6 +1,8 @@
 module Api
   module V1
     class WritersInfoController < ApplicationController
+      include UserAuthentification
+
       # before_action :set_user
       # before_action :require_current_user_is_writer!, only: %i[create]
 
@@ -54,15 +56,6 @@ module Api
           render json: { messages: 'you have to be writer or admin'}, status: :unauthorized unless (current_user&.writer? || current_user&.admin?)
         end
 
-        def set_user
-          header = JSON.parse(request.headers['Authorization'])
-      
-          return nil if header.nil?
-      
-          decoded = AccessToken.decode(header)
-          
-          @user = User.find_by(id: decoded[:user_id])
-        end
     end
   end
 end
