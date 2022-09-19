@@ -2,6 +2,7 @@ module Api
   module V1    
     class TasksController < ApplicationController
       include AccessToken
+      include UserAuthentification
 
       before_action :set_task, only: %i[show update destroy]
       before_action :set_user, only: %i[create destroy update]
@@ -54,15 +55,6 @@ module Api
           @task = Task.find_by(id: params[:id])
         end
 
-        def set_user
-          header = JSON.parse(request.headers['Authorization'])
-
-          return nil if header.nil?
-
-          decoded = AccessToken.decode(header)
-          
-          @user = User.find_by(id: decoded[:user_id])
-        end
     end
   end
 end

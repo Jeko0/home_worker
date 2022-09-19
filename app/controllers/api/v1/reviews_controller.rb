@@ -1,6 +1,8 @@
 module Api
   module V1
     class ReviewsController < ApplicationController
+      include UserAuthentification
+
       before_action :set_user, only: %i[create update destroy]
       before_action :set_review, only: %i[show update destroy]
       before_action :authenticate_author, only: %i[update destroy]
@@ -46,16 +48,6 @@ module Api
 
         def set_review
           @review = Review.find_by(id: params[:id])
-        end
-
-        def set_user
-          header = JSON.parse(request.headers['Authorization'])
-      
-          return nil if header.nil?
-      
-          decoded = AccessToken.decode(header)
-          
-          @user = User.find_by(id: decoded[:user_id])
         end
 
         def authenticate_author
