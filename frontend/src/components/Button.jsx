@@ -14,7 +14,7 @@ export const Button = ({bgColor, color, size, text, borderRadius}) => {
   return (
     <button type="button"
     style={{backgroundColor: bgColor, color, borderRadius}}
-    className={`text-${size} p-3 hover:drop-shadow-xl`}
+    className={`text-${size} px-4 py-1 hover:drop-shadow-xl`}
     onClick={redirectUser}>
       {text}
     </button>

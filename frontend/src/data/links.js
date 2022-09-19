@@ -5,6 +5,7 @@ import { MdSubject } from "react-icons/md";
 import { BsPencilFill, BsFileEarmarkSpreadsheetFill } from "react-icons/bs";
 import { FiSettings } from "react-icons/fi";
 import { CgProfile } from "react-icons/cg";
+import math from '../files/images/Math.jpg'
 
 export const Links = [
   {
@@ -55,5 +56,31 @@ export const Links = [
         icon: <BsFileEarmarkSpreadsheetFill />,
       },
     ],
+  },
+];
+
+export const Subjects = [
+  {
+    name: "math",
+  },
+
+  {
+    name: "english",
+  },
+
+  {
+    name: "history",
+  },
+
+  {
+    name: "geography",
+  },
+
+  {
+    name: "chemistry",
+  },
+
+  {
+    name: "biology",
   },
 ];
