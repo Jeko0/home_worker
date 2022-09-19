@@ -3,7 +3,7 @@ import logo from "../logo.jpg";
 import { selectCurrentUser } from "../store/user/user.select";
 import { useDispatch, useSelector } from "react-redux";
 import { Outlet, useNavigate } from "react-router-dom";
-import { setCurrentUser } from "../store/user/user.action";
+import { setAccessToken, setCurrentUser } from "../store/user/user.action";
 
 export const Navbar = () => {
   const currentUser = useSelector(selectCurrentUser);
@@ -16,6 +16,7 @@ export const Navbar = () => {
 
   const handleLogOut = () => {
     dispatch(setCurrentUser());
+    dispatch(setAccessToken(null))
     navigator('/');
   };
 

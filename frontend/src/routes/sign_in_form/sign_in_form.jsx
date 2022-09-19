@@ -22,13 +22,13 @@ const SignInForm = () => {
 
 
   const handleCloseAlert = (deleteError) => {
-    const leftErrors = errors.filter((error) => error != deleteError)
+    const leftErrors = errors.filter((error) => error !== deleteError)
     setErrors(leftErrors);
   }
 
   const handleErrorsMessage = (responseErrors) => {
-    const array = Object.keys(responseErrors);
-    const result = array.map((key) => (`${key} `+ responseErrors[key]))
+    const keys = Object.keys(responseErrors);
+    const result = keys.map((key) => (`$key ` + responseErrors[key]));
     setErrors(result);
   }
 
