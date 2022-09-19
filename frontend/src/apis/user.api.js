@@ -1,7 +1,8 @@
 import axios from "axios";
+import { DEFAULT_API } from "./default.api";
 
 // const API_URL = 'http://192.168.60.108:3001/api/v1/users'
-const API_URL = 'http://localhost:3001/api/v1/users'
+const API_URL = DEFAULT_API + '/users'
 
 export const getAllUser = async () => {
   const response = await axios.get(`${API_URL}/all_user`);

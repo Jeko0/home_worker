@@ -203,7 +203,7 @@ function WritersInfos() {
                                     "
                                     >
                                     <a
-                                        href="/"
+                                        href="/tasks/new"
                                         className="
                                         border border-primary
                                         py-2

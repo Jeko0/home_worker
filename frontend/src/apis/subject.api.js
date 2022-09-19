@@ -1,7 +1,7 @@
 import axios from "axios";
+import { DEFAULT_API } from "./default.api";
 
-const API_URL = 'http://localhost:3001/api/v1';
-// const API_URL = 'http://192.168.60.108:3001/api/v1'
+const API_URL = DEFAULT_API;
 
 export const getSubjects = async () => {
   try {
