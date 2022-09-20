@@ -1,17 +1,18 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { Outlet, useParams } from 'react-router-dom'
+import { Outlet, useNavigate, useParams } from 'react-router-dom'
 import { getTasks } from '../../apis/tasks.api'
 import { selectAccessToken } from '../../store/user/user.select'
 import { getTask } from '../../apis/tasks.api'
 import parse from 'html-react-parser';
-import htmlT
+import './task.styles.scss'
 
 const Task = () => {
   const [currentTask, setCurrentTask] = useState(null);
   const access_token = useSelector(selectAccessToken);
   const {task_id} = useParams();
   const [errors, setErrors] = useState([])
+  const navigator = useNavigate();
 
   useEffect(() => {
     try{
@@ -44,41 +45,39 @@ const Task = () => {
     setErrors(leftErrors);
   }
 
+  const handleBackTasksPage = () => {
+    navigator('/tasks');
+  }
+
   return (
     <Fragment>
       <Outlet/>
-      <div className='content-center container'>
-          {
-           currentTask ? (
-            <div>
-              <h1 className='tracking-wider text-black text-center '>{currentTask.title}</h1>
-              <p className='text-center underline mt-3'>
-                {}
-              </p>
-            </div>
-          ) : (
-            <div className='flex items-stretch w-full h-full justify-center'>
+        <div className='flex 
+        flex-col
+        flex-wrap
+        items-center 
+        justify-center 
+        ' >
+          <div className='w-full items-center'>
               {
-                  errors ? (
-                    <div className=" w-1/3 ">
-                    {errors.map((error) => (
-                      <div className="alert-toast flex float-left bottom-0 mt-8 w-5/6 md:w-full max-w-sm" onClick={() => handleCloseAlert(error)}>
-                        <label className="close cursor-pointer flex items-start justify-between w-full p-2 bg-red-600 h-24 rounded shadow-lg text-black" title="close">
-                          {error}
-                          <svg className="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
-                            <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
-                          </svg>
-                        </label>
-                      </div>
-                    )
-                    )}
-                    </div>
-                  ) : ( <></>)
-                }
-            </div>
-          ) 
-          }
-      </div>
+              currentTask ? (
+                <div className="p-6 shadow-lg rounded-lg text-center bg-gray-100 text-gray-700 items-center ">
+                  <h2 className="font-semibold text-3xl mb-5">{currentTask.title}</h2>
+                  <div id='task-description'>
+                    {parse(currentTask.description)}
+                  </div>
+                </div> 
+              ) : (
+                <div className="p-6 shadow-lg rounded-lg  text-center bg-gray-100 text-red-700">
+                  <p>
+                    {errors[0]}
+                  </p>
+                </div> 
+              ) 
+              }
+          </div>
+            <button className="bg-blue-500 hover:bg-blue-700 mx-auto text-white font-bold py-2 px-4 mt-5 rounded-full" onClick={handleBackTasksPage}>back tasks page</button>     
+        </div>
     </Fragment>
   )
 }

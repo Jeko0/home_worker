@@ -38,6 +38,7 @@
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "react-swipeable": "^7.0.0",
+    "react-use-file-upload": "^0.9.5",
     "redux": "^4.2.0",
     "redux-logger": "^3.0.6",
     "redux-persist": "^6.0.0",
