@@ -8,13 +8,15 @@ import english from "../../files/images/English.webp";
 import geography from "../../files/images/Geography.webp";
 import history from "../../files/images/History.webp";
 import chemistry from "../../files/images/Chemistry.jpg";
+import success from '../../files/images/success.png'
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Button } from "../../components/Button";
 import { Footer } from "../../components/Footer";
 import "swiper/css";
 import "swiper/css/navigation";
 import SwiperCore, { Autoplay, Pagination, Navigation } from "swiper";
-import { FiPackage } from "react-icons/fi";
+import { topics } from "../../data/links.js";
+import { LandingForm  } from "../../components/LandingForm.jsx";
 
 const Home = () => {
   SwiperCore.use([Autoplay]);
@@ -113,17 +115,20 @@ const Home = () => {
               <img src={history} alt="" />
             </SwiperSlide>
           </Swiper>
+          <p className=" mt-7 text-center">Hire best of the best</p>
         </div>
       </div>
       <div className="justify-center flex mt-10">
-        <div className="grid grid-cols-2 gap-10 w-4/5">
+        <div className="grid grid-cols-2 gap-10 w-2/3">
           {Subjects.map((subject) => (
             <div
               key={subject.name}
               className="rounded overflow-hidden shadow-lg w-full"
-            > 
+            >
               <div className="px-6 py-4">
-                <div className="font-bold text-xl mb-2 hover:text-teal-400">{subject.name}</div>
+                <div className="font-bold text-xl mb-2 hover:text-teal-400">
+                  {subject.name}
+                </div>
                 <p className="text-gray-700 text-base">
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                   Voluptatibus quia, nulla! Maiores et perferendis eaque,
@@ -134,7 +139,29 @@ const Home = () => {
           ))}
         </div>
       </div>
-      <Footer/>
+      <p className="text-center mt-10 text-2xl">
+        Articles that Our writers Provide
+      </p>
+      <div className="mt-12 grid grid-cols-3 w-full space-y-3 border-2 border-black bg-slate-200">
+        {topics.map((topic) => (
+          <div
+            key={topic.name}
+            className="items-center justify-center gap-3 flex front-extrabold tracking-tight text-slate-900 hover:text-teal-400 pl-3 p-10"
+          >
+            {topic.icon}
+            <span className="capitalize text-xl">{topic.title}</span>
+          </div>
+        ))}
+      </div>
+
+      <div className="bg-neutral-100">
+        <p className="text-center mt-12 text-2xl">Find Specific subject</p>
+        <div className="mt-12 md:container mx-auto grid grid-cols-2 items-center">
+          <LandingForm />
+          <img src={success} />
+        </div>
+      </div>
+      <Footer />
     </div>
   );
 };

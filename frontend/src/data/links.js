@@ -5,7 +5,13 @@ import { MdSubject } from "react-icons/md";
 import { BsPencilFill, BsFileEarmarkSpreadsheetFill } from "react-icons/bs";
 import { FiSettings } from "react-icons/fi";
 import { CgProfile } from "react-icons/cg";
-import math from '../files/images/Math.jpg'
+import { GiMountainCave } from "react-icons/gi";
+import { MdOutlineBusinessCenter } from 'react-icons/md';
+import { GiMedicalPackAlt } from 'react-icons/gi';
+import { CgGym } from 'react-icons/cg';
+import { FaMoneyBillWave } from 'react-icons/fa';
+import { GiClothes } from 'react-icons/gi'
+
 
 export const Links = [
   {
@@ -82,5 +88,38 @@ export const Subjects = [
 
   {
     name: "biology",
+  },
+];
+
+
+export const topics = [
+  {
+    title: "travel",
+    icon: <GiMountainCave />,
+  },
+
+  {
+    title: "business",
+    icon: <MdOutlineBusinessCenter />,
+  },
+
+  {
+    title: "medicine",
+    icon: <GiMedicalPackAlt />,
+  },
+
+  {
+    title: "lifestyle",
+    icon: <CgGym /> ,
+  },
+
+  {
+    title: "finance",
+    icon: <FaMoneyBillWave />,
+  },
+
+  {
+    title: "fashion",
+    icon: <GiClothes />,
   },
 ];
