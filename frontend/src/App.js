@@ -9,6 +9,8 @@ import Categories from './routes/categories/categories';
 import Profile from './routes/profile/profile';
 import WritersInfos from './routes/writers_infos/writers_infos';
 import TasksCreator from './routes/tasks/tasks_creator';
+import Tasks from './routes/tasks/tasks';
+import Task from './routes/tasks/task';
 
 
 function App() {
@@ -27,6 +29,9 @@ function App() {
             <Route path='/categories' element={ <Categories/> } />
             <Route path='users/:user_id/writers_infos' element={<WritersInfos/>} />
             <Route path='tasks/new' element={<TasksCreator/>} />
+            <Route path='tasks' element={<Tasks/>}/>
+            <Route path='tasks/:task_id' element={<Task/>} />
+            
           </Route>
         </Routes>
       </div>

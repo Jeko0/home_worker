@@ -1,0 +1,17 @@
+table, th, td {
+  border: 1px solid;
+  min-width: 100px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table {
+  margin: auto;
+}
+
+#task-description {
+  justify-content: center;
+}
