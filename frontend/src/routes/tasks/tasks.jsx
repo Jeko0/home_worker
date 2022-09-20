@@ -4,12 +4,13 @@ import { useSelector } from 'react-redux';
 import { selectAccessToken } from '../../store/user/user.select';
 import { getTasks } from '../../apis/tasks.api';
 import { Fragment } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 
 function Tasks() {
   const [tasks, setTasks] = useState([]);
   const access_token = useSelector(selectAccessToken);
   const [errors, setErrors] = useState([]);
+  const navigator = useNavigate();
 
   const handleSetErrors = (errorsResponse) => {
     const keys = Object.keys(errorsResponse);
@@ -34,6 +35,11 @@ function Tasks() {
     }
   }, [])
 
+  const handleNavigateTaskPage = (id) => {
+    const task_id = parseInt(id); 
+    navigator(`/tasks/${task_id}`);
+  }
+
 
   return (
     <Fragment>
@@ -42,7 +48,7 @@ function Tasks() {
         <div className='grid grid-cols-5 gap-10' >
           {
             tasks.map((task) => (
-              <div  className=" bg-yellow-500 rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+              <div onClick={() => handleNavigateTaskPage(task.id)}  className=" bg-yellow-500 rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
                 <div className="p-5">
                   <span className="mb-2 container mx-auto flex text-center decoration-solid text-black font-bold tracking-tight dark:text-white"> {task.title}</span>
                 </div>

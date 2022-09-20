@@ -35,7 +35,7 @@ export const getTasks = async (token) => {
 
 export const getTask = async (task_id, token) => {
   try{
-    const response = axios.get(`${API_URL}/tasks/${task_id}`, {
+    const response = axios.get(`${API_URL}/${task_id}`, {
       headers: {
         'Authorization': token,
         'Content-Type': 'application/json'
