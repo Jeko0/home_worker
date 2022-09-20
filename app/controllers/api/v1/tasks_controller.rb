@@ -13,7 +13,11 @@ module Api
       end
 
       def show
-        render json: @task, status: :ok 
+        if @task
+          render json: @task, status: :ok
+        else
+          render json: {task: 'not exist'}, status: 203
+        end
       end
 
       def create
