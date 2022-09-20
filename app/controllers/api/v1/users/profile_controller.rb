@@ -13,7 +13,7 @@ module Api
         if @user
           render json: @user, status: :ok
         else
-          render json: {errors: 'id not exist'}, status: :unprocessable_entity
+          render json: {user: 'id not exist'}, status: :unprocessable_entity
         end
       end
     end
