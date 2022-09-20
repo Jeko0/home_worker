@@ -11,7 +11,7 @@ import { selectCurrentUser } from '../store/user/user.select';
 export const Sidebar = () => {
   const currentUser = useSelector(selectCurrentUser);
 
-  const sidebarStyle = "items-center gap-3 ml-3 mt-4 flex text-x1 front-extrabold tracking-tight dark:text-white text-slate-900 pl-3 hover:bg-slate-400 hover:rounded-lg"
+  const sidebarStyle = "items-center gap-3 ml-3 mt-4 flex text-xl front-extrabold tracking-tight dark:text-white text-slate-900 pl-3 hover:bg-slate-400 hover:rounded-lg"
   return (
     <Menu>
       <div className="flex justify-between items-center">
